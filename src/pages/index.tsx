@@ -8,6 +8,21 @@ import { Todo } from "../types";
 export const TodoList: React.FC = () => {
   const { data: todos, error } = useTodos();
 
+  // localhost:3000/api/login
+  // username, password
+
+  const handdleLogin = async () => {
+    const response = await fetch("/api/login", {
+      method: "POST",
+      body: JSON.stringify({
+        username: "test",
+        password: "test",
+      }),
+    });
+    const data = await response.json();
+    console.log(data);
+  }
+
   if (error != null) return <div>Error loading todos...</div>;
   if (todos == null) return <div>Loading...</div>;
 
